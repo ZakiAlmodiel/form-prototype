@@ -112,11 +112,12 @@
 
           <div class="form-actions">
             <a href="openended.html" class="btn-ghost">← Back</a>
-            <button class="btn-submit" onclick="submitForm()">
+            <button class="btn-submit" onclick="handleSubmit()">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               Submit Form
             </button>
           </div>
+
         </div>
       </div>
 
@@ -125,8 +126,13 @@
 
   <script src="js/main.js"></script>
   <script>
+    // Populate review fields from localStorage
     window.addEventListener('DOMContentLoaded', () => {
-      const fields = ['fullname','email','contact','course','year','frequency','device','frustrations','feeling','confusing','coping','improvement'];
+      const fields = [
+        'fullname','email','contact','course','year',
+        'frequency','device','frustrations','feeling',
+        'confusing','coping','improvement'
+      ];
       fields.forEach(key => {
         const el = document.getElementById('rev-' + key);
         if (el) {
@@ -135,6 +141,27 @@
         }
       });
     });
+
+    // Submit handler
+    function handleSubmit() {
+      const consent = document.getElementById('consent');
+
+      if (!consent.checked) {
+        const box = consent.closest('.consent-box');
+        box.style.outline = '2px solid #EF4444';
+        box.style.outlineOffset = '2px';
+        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => {
+          box.style.outline = '';
+          box.style.outlineOffset = '';
+        }, 2500);
+        return;
+      }
+
+      localStorage.setItem('ff_submittime', new Date().toISOString());
+      window.location.href = 'success.html';
+    }
   </script>
+
 </body>
 </html>
