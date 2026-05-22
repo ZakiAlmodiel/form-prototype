@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FormFlow – Personal Info</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="screen active">
+    <div class="form-shell">
+
+      <div class="form-sidebar">
+        <div class="sidebar-brand">FormFlow</div>
+        <nav class="sidebar-steps">
+          <div class="step-item active">
+            <div class="step-dot"><span>1</span></div>
+            <div class="step-text">
+              <div class="step-title">Personal Info</div>
+              <div class="step-desc">About you</div>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-item">
+            <div class="step-dot"><span>2</span></div>
+            <div class="step-text">
+              <div class="step-title">Form Details</div>
+              <div class="step-desc">Core questions</div>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-item">
+            <div class="step-dot"><span>3</span></div>
+            <div class="step-text">
+              <div class="step-title">Open-Ended</div>
+              <div class="step-desc">Your thoughts</div>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-item">
+            <div class="step-dot"><span>4</span></div>
+            <div class="step-text">
+              <div class="step-title">Review</div>
+              <div class="step-desc">Confirm answers</div>
+            </div>
+          </div>
+        </nav>
+        <div class="sidebar-note">Your answers are saved automatically as you type.</div>
+      </div>
+
+      <div class="form-main">
+        <div class="form-top-bar">
+          <div class="progress-wrap">
+            <div class="progress-label">
+              <span>Section 1 of 4</span>
+              <span class="progress-pct">25%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 25%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-content">
+          <div class="section-header">
+            <div class="section-number">01</div>
+            <div>
+              <h2 class="section-title">Personal Information</h2>
+              <p class="section-sub">Tell us a bit about yourself. All fields marked <span class="req-star">*</span> are required.</p>
+            </div>
+          </div>
+
+          <div class="fields-grid">
+            <div class="field-group full">
+              <label class="field-label" for="fullname">Full Name <span class="req-star">*</span></label>
+              <input class="field-input" type="text" id="fullname" placeholder="e.g. Juan Dela Cruz" oninput="saveField('fullname', this.value)" />
+              <div class="autofill-hint">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Auto-fill available — <button class="autofill-btn" onclick="autofill()">Use saved profile</button>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="email">Email Address <span class="req-star">*</span></label>
+              <input class="field-input" type="email" id="email" placeholder="you@email.com" oninput="saveField('email', this.value)" />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="contact">Contact Number</label>
+              <input class="field-input" type="tel" id="contact" placeholder="+63 9XX XXX XXXX" oninput="saveField('contact', this.value)" />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="course">Course / Program <span class="req-star">*</span></label>
+              <div class="select-wrap">
+                <select class="field-input field-select" id="course" onchange="saveField('course', this.value)">
+                  <option value="" disabled selected>Select your course</option>
+                  <option>BS Information Technology</option>
+                  <option>BS Computer Science</option>
+                  <option>BS Electronics Engineering</option>
+                  <option>BS Education</option>
+                  <option>Other</option>
+                </select>
+                <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="year">Year Level <span class="req-star">*</span></label>
+              <div class="select-wrap">
+                <select class="field-input field-select" id="year" onchange="saveField('year', this.value)">
+                  <option value="" disabled selected>Select year level</option>
+                  <option>1st Year</option>
+                  <option>2nd Year</option>
+                  <option>3rd Year</option>
+                  <option>4th Year</option>
+                </select>
+                <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <a href="index.html" class="btn-ghost">← Back</a>
+            <a href="details.html" class="btn-primary">
+              Continue
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Restore saved values on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      ['fullname','email','contact'].forEach(id => {
+        const saved = localStorage.getItem('ff_' + id);
+        if (saved) document.getElementById(id).value = saved;
+      });
+      ['course','year'].forEach(id => {
+        const saved = localStorage.getItem('ff_' + id);
+        if (saved) {
+          const el = document.getElementById(id);
+          [...el.options].forEach(o => { if (o.value === saved) o.selected = true; });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

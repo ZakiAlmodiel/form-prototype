@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FormFlow – Open-Ended</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="screen active">
+    <div class="form-shell">
+
+      <div class="form-sidebar">
+        <div class="sidebar-brand">FormFlow</div>
+        <nav class="sidebar-steps">
+          <div class="step-item done">
+            <div class="step-dot check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="step-text"><div class="step-title">Personal Info</div><div class="step-desc">Completed</div></div>
+          </div>
+          <div class="step-connector done"></div>
+          <div class="step-item done">
+            <div class="step-dot check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="step-text"><div class="step-title">Form Details</div><div class="step-desc">Completed</div></div>
+          </div>
+          <div class="step-connector done"></div>
+          <div class="step-item active">
+            <div class="step-dot"><span>3</span></div>
+            <div class="step-text"><div class="step-title">Open-Ended</div><div class="step-desc">Your thoughts</div></div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-item">
+            <div class="step-dot"><span>4</span></div>
+            <div class="step-text"><div class="step-title">Review</div><div class="step-desc">Confirm answers</div></div>
+          </div>
+        </nav>
+        <div class="sidebar-note">Type a few words and let AI expand it into a full answer for you.</div>
+      </div>
+
+      <div class="form-main">
+        <div class="form-top-bar">
+          <div class="progress-wrap">
+            <div class="progress-label">
+              <span>Section 3 of 4</span>
+              <span class="progress-pct">75%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 75%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-content">
+          <div class="section-header">
+            <div class="section-number">03</div>
+            <div>
+              <h2 class="section-title">Your Thoughts</h2>
+              <p class="section-sub">Share in your own words. There are no wrong answers.</p>
+            </div>
+          </div>
+
+          <div class="fields-grid">
+
+            <!-- Q1 -->
+            <div class="field-group full">
+              <label class="field-label" for="confusing">Describe a time you found a form confusing or hard to complete. <span class="req-star">*</span></label>
+              <div class="prompt-hint">💡 <strong>Example:</strong> "I once had to fill out a government form where the terms were unclear and there were no examples given..."</div>
+              <textarea class="field-textarea" id="confusing" placeholder="Type your answer here..." oninput="updateCount(this, 'count-confusing', 300); saveField('confusing', this.value)"></textarea>
+              <div class="textarea-footer">
+                <span class="char-count" id="count-confusing">0 / 300 characters</span>
+                <span class="textarea-tip">Be as specific as you like.</span>
+              </div>
+              <div class="ai-row">
+                <button class="btn-ai" onclick="expandWithAI('confusing', 'ai-status-confusing')">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                  Deliver Message with AI
+                </button>
+                <span class="ai-hint">e.g. <em>"long form annoying"</em> → AI writes a full answer for you</span>
+                <span class="ai-status" id="ai-status-confusing"></span>
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="field-group full">
+              <label class="field-label" for="coping">What do you usually do when you encounter a field you don't understand?</label>
+              <div class="prompt-hint">💡 <strong>Example:</strong> "I usually re-read it, and if still unclear, I skip it and come back later..."</div>
+              <textarea class="field-textarea" id="coping" placeholder="Type your answer here..." oninput="updateCount(this, 'count-coping', 300); saveField('coping', this.value)"></textarea>
+              <div class="textarea-footer">
+                <span class="char-count" id="count-coping">0 / 300 characters</span>
+                <span class="textarea-tip">Skip this if you prefer.</span>
+              </div>
+              <div class="ai-row">
+                <button class="btn-ai" onclick="expandWithAI('coping', 'ai-status-coping')">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                  Deliver Message with AI
+                </button>
+                <span class="ai-hint">e.g. <em>"skip and ask someone"</em> → AI writes a full answer for you</span>
+                <span class="ai-status" id="ai-status-coping"></span>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="field-group full">
+              <label class="field-label" for="improvement">If you could change ONE thing about how forms are designed, what would it be?</label>
+              <div class="prompt-hint">💡 <strong>Example:</strong> "I'd add a progress bar so I know how much is left..."</div>
+              <textarea class="field-textarea" id="improvement" placeholder="Type your answer here..." oninput="updateCount(this, 'count-improvement', 300); saveField('improvement', this.value)"></textarea>
+              <div class="textarea-footer">
+                <span class="char-count" id="count-improvement">0 / 300 characters</span>
+                <span class="textarea-tip">This directly shapes our design.</span>
+              </div>
+              <div class="ai-row">
+                <button class="btn-ai" onclick="expandWithAI('improvement', 'ai-status-improvement')">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                  Deliver Message with AI
+                </button>
+                <span class="ai-hint">e.g. <em>"shorter questions"</em> → AI writes a full answer for you</span>
+                <span class="ai-status" id="ai-status-improvement"></span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-actions">
+            <a href="details.html" class="btn-ghost">← Back</a>
+            <a href="review.html" class="btn-primary">
+              Review Answers
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      ['confusing','coping','improvement'].forEach(id => {
+        const saved = localStorage.getItem('ff_' + id);
+        if (saved) {
+          const el = document.getElementById(id);
+          el.value = saved;
+          updateCount(el, 'count-' + id, 300);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

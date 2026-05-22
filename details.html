@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FormFlow – Form Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="screen active">
+    <div class="form-shell">
+
+      <div class="form-sidebar">
+        <div class="sidebar-brand">FormFlow</div>
+        <nav class="sidebar-steps">
+          <div class="step-item done">
+            <div class="step-dot check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="step-text">
+              <div class="step-title">Personal Info</div>
+              <div class="step-desc">Completed</div>
+            </div>
+          </div>
+          <div class="step-connector done"></div>
+          <div class="step-item active">
+            <div class="step-dot"><span>2</span></div>
+            <div class="step-text">
+              <div class="step-title">Form Details</div>
+              <div class="step-desc">Core questions</div>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-item">
+            <div class="step-dot"><span>3</span></div>
+            <div class="step-text">
+              <div class="step-title">Open-Ended</div>
+              <div class="step-desc">Your thoughts</div>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-item">
+            <div class="step-dot"><span>4</span></div>
+            <div class="step-text">
+              <div class="step-title">Review</div>
+              <div class="step-desc">Confirm answers</div>
+            </div>
+          </div>
+        </nav>
+        <div class="sidebar-note">Your answers are saved automatically as you type.</div>
+      </div>
+
+      <div class="form-main">
+        <div class="form-top-bar">
+          <div class="progress-wrap">
+            <div class="progress-label">
+              <span>Section 2 of 4</span>
+              <span class="progress-pct">50%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 50%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-content">
+          <div class="section-header">
+            <div class="section-number">02</div>
+            <div>
+              <h2 class="section-title">Form Details</h2>
+              <p class="section-sub">Core questions about your form-filling habits and experience.</p>
+            </div>
+          </div>
+
+          <div class="fields-grid">
+            <div class="field-group full">
+              <label class="field-label">How often do you fill out forms? <span class="req-star">*</span></label>
+              <div class="radio-group">
+                <label class="radio-card">
+                  <input type="radio" name="frequency" value="Daily" onchange="saveField('frequency', this.value)" />
+                  <div class="radio-content">
+                    <div class="radio-title">Daily</div>
+                    <div class="radio-sub">Multiple times a day</div>
+                  </div>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="frequency" value="Weekly" onchange="saveField('frequency', this.value)" />
+                  <div class="radio-content">
+                    <div class="radio-title">Weekly</div>
+                    <div class="radio-sub">A few times per week</div>
+                  </div>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="frequency" value="Monthly" onchange="saveField('frequency', this.value)" />
+                  <div class="radio-content">
+                    <div class="radio-title">Monthly</div>
+                    <div class="radio-sub">Occasionally</div>
+                  </div>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="frequency" value="Rarely" onchange="saveField('frequency', this.value)" />
+                  <div class="radio-content">
+                    <div class="radio-title">Rarely</div>
+                    <div class="radio-sub">Only when required</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="field-group full">
+              <label class="field-label">Which field types frustrate you the most? <span class="req-star">*</span> <span class="helper-text">(Select all that apply)</span></label>
+              <div class="checkbox-group">
+                <label class="checkbox-card">
+                  <input type="checkbox" name="frustrations" value="Essay / Long text" onchange="saveFrustrations()" />
+                  <span class="checkbox-box"></span>
+                  Essay / Long text fields
+                </label>
+                <label class="checkbox-card">
+                  <input type="checkbox" name="frustrations" value="Dropdowns" onchange="saveFrustrations()" />
+                  <span class="checkbox-box"></span>
+                  Dropdowns with too many options
+                </label>
+                <label class="checkbox-card">
+                  <input type="checkbox" name="frustrations" value="Date pickers" onchange="saveFrustrations()" />
+                  <span class="checkbox-box"></span>
+                  Date picker fields
+                </label>
+                <label class="checkbox-card">
+                  <input type="checkbox" name="frustrations" value="File uploads" onchange="saveFrustrations()" />
+                  <span class="checkbox-box"></span>
+                  File upload fields
+                </label>
+                <label class="checkbox-card">
+                  <input type="checkbox" name="frustrations" value="Likert / Rating scales" onchange="saveFrustrations()" />
+                  <span class="checkbox-box"></span>
+                  Likert / Rating scales
+                </label>
+                <label class="checkbox-card">
+                  <input type="checkbox" name="frustrations" value="Repeated fields" onchange="saveFrustrations()" />
+                  <span class="checkbox-box"></span>
+                  Repeated information fields
+                </label>
+              </div>
+            </div>
+
+            <div class="field-group full">
+              <label class="field-label">Which device do you primarily use for forms? <span class="req-star">*</span></label>
+              <div class="radio-group">
+                <label class="radio-card">
+                  <input type="radio" name="device" value="Phone" onchange="saveField('device', this.value)" />
+                  <div class="radio-content">
+                    <div class="radio-title">📱 Phone</div>
+                    <div class="radio-sub">Most convenient</div>
+                  </div>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="device" value="Laptop" onchange="saveField('device', this.value)" />
+                  <div class="radio-content">
+                    <div class="radio-title">💻 Laptop</div>
+                    <div class="radio-sub">Easier to type</div>
+                  </div>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="device" value="Tablet" onchange="saveField('device', this.value)" />
+                  <div class="radio-content">
+                    <div class="radio-title">📲 Tablet</div>
+                    <div class="radio-sub">When available</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="field-group full">
+              <label class="field-label">How do you feel when you see a long form? <span class="req-star">*</span></label>
+              <div class="emoji-scale">
+                <label class="emoji-option">
+                  <input type="radio" name="feeling" value="😩 Dread it" onchange="saveField('feeling', this.value)" />
+                  <div class="emoji-face">😩</div>
+                  <div class="emoji-label">Dread it</div>
+                </label>
+                <label class="emoji-option">
+                  <input type="radio" name="feeling" value="😕 Annoyed" onchange="saveField('feeling', this.value)" />
+                  <div class="emoji-face">😕</div>
+                  <div class="emoji-label">Annoyed</div>
+                </label>
+                <label class="emoji-option">
+                  <input type="radio" name="feeling" value="😐 Neutral" onchange="saveField('feeling', this.value)" />
+                  <div class="emoji-face">😐</div>
+                  <div class="emoji-label">Neutral</div>
+                </label>
+                <label class="emoji-option">
+                  <input type="radio" name="feeling" value="🙂 Okay with it" onchange="saveField('feeling', this.value)" />
+                  <div class="emoji-face">🙂</div>
+                  <div class="emoji-label">Okay with it</div>
+                </label>
+                <label class="emoji-option">
+                  <input type="radio" name="feeling" value="😄 No problem" onchange="saveField('feeling', this.value)" />
+                  <div class="emoji-face">😄</div>
+                  <div class="emoji-label">No problem</div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <a href="personal.html" class="btn-ghost">← Back</a>
+            <a href="openended.html" class="btn-primary">
+              Continue
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    function saveFrustrations() {
+      const checked = [...document.querySelectorAll('input[name="frustrations"]:checked')];
+      const vals = checked.map(c => c.value).join(', ');
+      localStorage.setItem('ff_frustrations', vals || '');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Restore radios
+      ['frequency','device','feeling'].forEach(name => {
+        const saved = localStorage.getItem('ff_' + name);
+        if (saved) {
+          const el = document.querySelector(`input[name="${name}"][value="${saved}"]`);
+          if (el) el.checked = true;
+        }
+      });
+      // Restore checkboxes
+      const savedFrust = localStorage.getItem('ff_frustrations');
+      if (savedFrust) {
+        savedFrust.split(', ').forEach(val => {
+          const el = document.querySelector(`input[name="frustrations"][value="${val}"]`);
+          if (el) el.checked = true;
+        });
+      }
+    });
+  </script>
+</body>
+</html>
